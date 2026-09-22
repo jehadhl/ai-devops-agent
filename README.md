@@ -1,365 +1,301 @@
-🐙 OpsKraken
+<div align="center">
 
-<p align="center"><strong>AI DevOps experimentation with MCP, Docker, GitHub, and intelligent agents.</strong></p>
-<p align="center">A hands-on engineering project exploring how AI agents can interact with real DevOps systems through the Model Context Protocol.</p>
-<p align="center">
-  <img src="https://img.shields.io/badge/Python-3.12%2B-3776AB?logo=python&logoColor=white" alt="Python">
-  <img src="https://img.shields.io/badge/MCP-Server-6C63FF" alt="MCP">
-  <img src="https://img.shields.io/badge/Docker-Integrated-2496ED?logo=docker&logoColor=white" alt="Docker">
-  <img src="https://img.shields.io/badge/GitHub-Integrated-181717?logo=github&logoColor=white" alt="GitHub">
-  <img src="https://img.shields.io/badge/Package%20Manager-uv-DE5FE9" alt="uv">
-</p>
+# 🐙 OpsKraken
 
-<p align="center">
-  <a href="#overview">Overview</a> •
-  <a href="#architecture">Architecture</a> •
-  <a href="#docker-integration">Docker</a> •
-  <a href="#github-integration">GitHub</a> •
-  <a href="#setup">Setup</a> •
-  <a href="#roadmap">Roadmap</a>
-</p>
+**AI-Powered DevOps Assistant with Model Context Protocol (MCP)**
 
-Overview
+[![Python 3.12+](https://img.shields.io/badge/Python-3.12%2B-3776AB?style=for-the-badge&logo=python&logoColor=white)](https://www.python.org/)
+[![MCP](https://img.shields.io/badge/MCP-Server-6C63FF?style=for-the-badge)](https://modelcontextprotocol.io/)
+[![Docker](https://img.shields.io/badge/Docker-Integrated-2496ED?style=for-the-badge&logo=docker&logoColor=white)](https://www.docker.com/)
+[![GitHub API](https://img.shields.io/badge/GitHub-API-181717?style=for-the-badge&logo=github&logoColor=white)](https://docs.github.com/en/rest)
+[![License](https://img.shields.io/badge/License-MIT-green?style=for-the-badge)](LICENSE)
 
-OpsKraken is a portfolio and learning project focused on building an AI-driven DevOps assistant with the Model Context Protocol (MCP).
+</div>
 
-The current implementation provides a modular MCP server with real integrations for Docker and GitHub.
+---
 
-Current capabilities
+## Overview
 
-🐳 Docker integration
+OpsKraken is an AI-driven DevOps automation platform built on **Model Context Protocol (MCP)** to intelligently interact with Docker, GitHub, Kubernetes, and AWS systems.
 
-🐙 GitHub integration
+### ✨ Features
 
-⚙️ Dynamic MCP registration
+- 🐳 **Docker** - Container lifecycle, images, networks, volumes, logs
+- 🐙 **GitHub** - Repos, workflows, PRs, issues, releases
+- 🤖 **AI Agents** - Multi-agent architecture for intelligent automation
+- 🔌 **MCP Integration** - Dynamic tool registration and provider management
+- 🛡️ **Production-Ready** - Error handling, logging, type safety
 
-🔌 Provider-based architecture
+---
 
-🧩 Manager / API / client separation
+## 🏗️ Multi-Agent Architecture
 
-♻️ Provider lifecycle management
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    👤 User Request                          │
+│          "Deploy app and monitor performance"              │
+└───────────────────────────┬─────────────────────────────────┘
+                            │
+                            ▼
+          ┌──────────────────────────────────┐
+          │  🤖 Supervisor Agent (Orchestrator)
+          │  • Parse request                 │
+          │  • Plan multi-step workflow      │
+          │  • Coordinate specialists       │
+          │  • Monitor progress             │
+          └─────────┬──────────┬─────────┬───┘
+                    │          │         │
+        ┌───────────┘          │         └───────────┐
+        │                      │                     │
+        ▼                      ▼                      ▼
+   ┌────────────┐      ┌────────────┐      ┌────────────┐
+   │ 🐳 Docker  │      │ 🐙 GitHub  │      │ ☸️ K8s     │
+   │ Specialist │      │ Specialist │      │ Specialist │
+   └────┬───────┘      └────┬───────┘      └────┬───────┘
+        │                   │                    │
+        │ ▼                 │ ▼                  │ ▼
+        │ • Build image     │ • Create PR       │ • Deploy pods
+        │ • Run container   │ • Trigger CI/CD   │ • Scale replicas
+        │ • Get logs        │ • Monitor runs    │ • Monitor health
+        │
+        └─────────────────────────────────────────┘
+                    │
+                    ▼
+        ┌───────────────────────────────┐
+        │  📋 MCP Protocol Bridge       │
+        │  (Tool Discovery & Execution) │
+        └───────────┬───────────────────┘
+                    │
+        ┌───────────┼───────────┐
+        │           │           │
+        ▼           ▼           ▼
+   ┌────────┐ ┌────────┐ ┌────────┐
+   │ Docker │ │GitHub  │ │  K8s   │
+   │ Tools  │ │ Tools  │ │ Tools  │
+   └────┬───┘ └────┬───┘ └────┬───┘
+        │          │          │
+        ▼          ▼          ▼
+   ┌────────────────────────────────┐
+   │   🧰 Provider System           │
+   │   • Connection pooling         │
+   │   • Error handling             │
+   │   • Retry logic                │
+   │   • Rate limiting              │
+   └────────┬───────────────────────┘
+            │
+   ┌────────┼────────┬──────────┐
+   │        │        │          │
+   ▼        ▼        ▼          ▼
+ Docker  GitHub   K8s API   AWS API
+ Engine  REST     Server    Endpoints
+```
 
-🔐 Environment-based configuration
+### How Multi-Agent System Works
 
-🛡️ Structured error handling
+The OpsKraken system uses a **3-tier intelligence model** with LLM, Planning, and Memory:
 
-[!NOTE]
-OpsKraken is an engineering practice project, not a SaaS platform.
+```
+User Request
+     │
+     ▼
+┌─────────────────────────────────────────────────┐
+│  🧠 LLM Layer (Claude/GPT)                      │
+│  • Understand natural language                  │
+│  • Reason about complex tasks                   │
+│  • Generate execution plans                     │
+└──────────────┬──────────────────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────────────────┐
+│  📋 Planning & Memory Layer                     │
+│  • Break task into sub-steps                    │
+│  • Store execution context                      │
+│  • Track completed tasks                        │
+│  • Learn from previous operations               │
+└──────────────┬──────────────────────────────────┘
+               │
+               ▼
+┌─────────────────────────────────────────────────┐
+│  🤖 Supervisor Agent (Orchestrator)             │
+│  • Coordinate specialist agents                 │
+│  • Manage parallel execution                    │
+│  • Handle failures and retries                  │
+│  • Update memory with results                   │
+└──────────────┬──────────────────────────────────┘
+               │
+     ┌─────────┼─────────┐
+     │         │         │
+     ▼         ▼         ▼
+ Docker    GitHub      K8s
+Specialist Specialist Specialist
+  Agents    Agents     Agents
+```
 
-Architecture
+### Key Components
 
-flowchart LR
-    USER["👤 User / AI Agent"]
-    CLIENT["🧠 MCP Client"]
-    SERVER["⚙️ OpsKraken MCP Server"]
-    DOCKER["🐳 Docker"]
-    GITHUB["🐙 GitHub"]
-    ENGINE["Docker Engine"]
-    GHAPI["GitHub REST API"]
+**1. LLM Integration** 🧠
+- Claude AI for understanding user intent
+- Natural language task decomposition
+- Intelligent decision making
+- Context-aware responses
 
-    USER --> CLIENT --> SERVER
-    SERVER --> DOCKER --> ENGINE
-    SERVER --> GITHUB --> GHAPI
+**2. Planning Engine** 📋
+- Multi-step workflow generation
+- Dependency resolution
+- Parallel execution optimization
+- Failure recovery strategies
 
-Provider design
+**3. Memory System** 💾
+- Short-term: Current execution context
+- Long-term: Operation history & learnings
+- Session state persistence
+- Cross-agent communication log
 
-flowchart LR
-    MCP["MCP Tool"]
-    REG["Registry"]
-    MAN["Manager"]
-    API["API Layer"]
-    CLIENT["Client Provider"]
-    EXT["External System"]
+**4. Supervisor Agent** 🤖
+- Routes tasks to specialist agents
+- Executes tasks in parallel
+- Aggregates results
+- Updates memory with outcomes
 
-    MCP --> REG --> MAN --> API --> CLIENT --> EXT
+**5. Specialist Agents** ⚙️
+- **Docker**: Container lifecycle operations
+- **GitHub**: Repository & CI/CD management
+- **K8s**: Orchestration & deployment
 
-Layer
+## Agent Responsibilities
 
-Responsibility
+🤖 Supervisor Agent — LLM-guided planning • Task routing • Result aggregation
 
-Registry
+🐳 Docker Specialist — Build & push images • Deploy containers • Scale & monitor
 
-Exposes provider capabilities through MCP
+🐙 GitHub Specialist — Manage repos • Trigger workflows • Track PRs & issues
 
-Manager
+☸️ K8s Specialist — Deploy pods • Scale replicas • Monitor cluster health
 
-Handles domain logic and response shaping
+## Layered Architecture
 
-API Layer
+🧠 LLM Layer — Understand user intent • Reason about tasks • Generate plans
 
-Defines provider-specific operations
+📋 Planning & Memory — Decompose tasks • Store context • Track history
 
-Client Provider
+📌 MCP Tools — AI-accessible capabilities • Tool discovery & registration
 
-Handles connectivity, auth, requests, and low-level errors
+⚙️ Manager — Domain logic • Response transformation • Error handling
 
-AppContext
+🔌 Client Provider — Low-level API operations • Auth & connectivity
 
-Stores providers and manages their lifecycle
+🧰 AppContext — Provider lifecycle • State management • Resource cleanup
 
-Docker Integration
 
-The Docker integration communicates with the local Docker Engine through the Docker SDK.
 
-flowchart LR
-    MCP["MCP Server"]
-    REG["Docker Registry"]
-    MAN["Docker Managers"]
-    SDK["Docker SDK"]
-    ENGINE["Docker Engine"]
+## 📁 Project Structure
 
-    MCP --> REG --> MAN --> SDK --> ENGINE
-
-Supported areas
-
-Containers
-
-Images
-
-Logs
-
-Networks
-
-Volumes
-
-The Docker provider is intended for environments where OpsKraken has local access to the Docker Engine.
-
-GitHub Integration
-
-The GitHub provider communicates with the GitHub REST API through a layered client, API, manager, and MCP registry architecture.
-
-flowchart LR
-    MCP["MCP Server"]
-    REG["GitHub Registry"]
-    MAN["GitHub Managers"]
-    API["GitHub API"]
-    CLIENT["GitHub Client"]
-    GH["GitHub REST API"]
-
-    MCP --> REG --> MAN --> API --> CLIENT --> GH
-
-Supported areas
-
-Repository information
-
-Authenticated repositories
-
-Organization repositories
-
-GitHub Actions workflows
-
-Workflow runs
-
-Workflow dispatch
-
-Pull requests
-
-Issues
-
-Releases
-
-Project Structure
-
+```
 ai-devops-agent/
 ├── apps/
-│   ├── agent/
+│   ├── agent/                    # AI agent layer (future)
+│   │
 │   └── mcp_server/
 │       ├── src/ai_devops_mcp/
 │       │   ├── core/
+│       │   │   ├── config.py
+│       │   │   ├── logging.py
+│       │   │   └── exceptions.py
+│       │   │
 │       │   ├── server/
+│       │   │   ├── mcp_server.py      # MCP server
+│       │   │   ├── context.py         # Provider lifecycle
+│       │   │   └── main.py            # Entry point
+│       │   │
 │       │   └── tools/
 │       │       ├── docker/
+│       │       │   ├── client.py
+│       │       │   ├── containers.py
+│       │       │   ├── images.py
+│       │       │   ├── registry.py
+│       │       │   └── ...
+│       │       │
 │       │       └── github/
+│       │           ├── client.py
+│       │           ├── repositories.py
+│       │           ├── workflows.py
+│       │           ├── registry.py
+│       │           └── ...
+│       │
+│       ├── tests/
+│       │   ├── unit/
+│       │   └── integration/
+│       │
 │       ├── .env.example
 │       ├── pyproject.toml
-│       └── uv.lock
-├── tests/
-├── .gitignore
+│       └── README.md
+│
+├── LICENSE
 └── README.md
+```
 
-Setup
+---
 
-Requirements
+## 🚀 Quick Start
 
-Python 3.12+
+### Prerequisites
 
-uv
+- Python 3.12+
+- Docker Engine/Desktop running
+- GitHub token (optional)
 
-Docker Desktop or Docker Engine
+### Installation
 
-GitHub fine-grained personal access token
-
-Clone
-
+```bash
+# Clone repository
 git clone https://github.com/jehadhl/ai-devops-agent.git
 cd ai-devops-agent/apps/mcp_server
 
-Install
+# Install dependencies
+uv sync --with dev
 
-uv sync
-
-Configure
-
+# Configure environment
 cp .env.example .env
+# Edit .env with your GITHUB_TOKEN and org
+```
 
-Example:
+### Run Server
 
-APP_NAME=OpsKraken MCP
-LOG_LEVEL=INFO
-DOCKER_RETRY_ATTEMPTS=3
-DOCKER_RETRY_DELAY=1.0
-GITHUB_TOKEN=
-GITHUB_API_URL=https://api.github.com
-GITHUB_TIMEOUT=10
-FAIL_ON_TOOL_REGISTRATION_ERROR=false
+```bash
+uv run dev
+```
 
-[!IMPORTANT]
-Never commit .env, access tokens, private keys, or other secrets.
+Expected output:
+```
+INFO: Starting AI DevOps MCP
+INFO: Docker client connected successfully
+INFO: GitHub client initialized
+INFO: MCP server ready with 50+ tools
+```
 
-Run
+---
 
-uv run --env-file .env python -m ai_devops_mcp.main
+## 📋 Available Tools
 
-AI Agent Direction
+### Docker
+- `docker_list_containers`, `docker_get_container_info`, `docker_run_container`
+- `docker_stop_container`, `docker_remove_container`
+- `docker_list_images`, `docker_pull_image`, `docker_build_image`
+- `docker_get_container_logs`, `docker_get_container_stats`
 
-The next phase connects an AI agent to OpsKraken through an MCP client.
+### GitHub
+- `github_get_repository`, `github_list_repositories`
+- `github_list_workflows`, `github_get_workflow_runs`, `github_trigger_workflow`
+- `github_list_pull_requests`, `github_list_issues`, `github_list_releases`
 
-flowchart LR
-    USER["👤 User"]
-    AGENT["🤖 AI Agent"]
-    MCP["MCP Client"]
-    SERVER["OpsKraken MCP"]
-    DEVOPS["Docker / GitHub"]
+---
 
-    USER --> AGENT --> MCP --> SERVER --> DEVOPS
+### 👨‍💻 Author
 
-The agent layer will focus on:
+**Jehad Hlewi**  
+Software Engineer | DevOps Enthusiast | AI/ML Explorer
 
-MCP tool discovery
+- 🔗 **GitHub:** [@jehadhl](https://github.com/jehadhl)
+- 💼 **LinkedIn:** [Jehad Hlewi](https://linkedin.com/in/je7d)
 
-MCP resources
 
-MCP prompts
-
-Tool selection
-
-Multi-step execution
-
-Context management
-
-Short-term memory
-
-Multi-agent orchestration
-
-Example:
-
-User:
-"Why is my backend container failing?"
-
-Agent:
-1. Discover available MCP capabilities
-2. Inspect the container
-3. Read recent logs
-4. Analyze the failure
-5. Explain the likely cause
-
-Roadmap
-
-MCP
-
-MCP server
-
-Shared AppContext
-
-Docker integration
-
-GitHub integration
-
-MCP resources
-
-MCP prompts
-
-AI Agent
-
-MCP client
-
-LLM integration
-
-Tool discovery
-
-Tool selection
-
-Multi-step execution
-
-Context management
-
-Short-term memory
-
-Multi-Agent
-
-Supervisor agent
-
-Docker specialist
-
-GitHub specialist
-
-Incident analysis agent
-
-Agent routing / orchestration
-
-Security
-
-Never commit .env
-
-Never commit GitHub tokens
-
-Use fine-grained GitHub tokens
-
-Grant only required repository permissions
-
-Never log secrets
-
-Keep Docker Engine access local
-
-Validate destructive operations before execution
-
-Tech Stack
-
-Technology
-
-Purpose
-
-Python
-
-Core language
-
-MCP
-
-AI tool protocol
-
-Docker SDK
-
-Docker Engine integration
-
-GitHub REST API
-
-GitHub integration
-
-Requests
-
-GitHub HTTP client
-
-uv
-
-Dependency management
-
-Author
-
-Jehad Hlewi
-Software Engineer
-GitHub: @jehadhl
-
-<p align="center">
-  <strong>OpsKraken</strong><br/>
-  Exploring MCP, AI agents, and real DevOps tooling.
-</p>
