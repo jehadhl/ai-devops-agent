@@ -1,0 +1,17 @@
+[project]
+name = "ai_devops_mcp"  
+version = "0.1.0"
+requires-python = ">=3.14"
+
+dependencies = [
+    "docker>=7.2.0",
+    "mcp[cli]>=2.2.0",
+    "requests>=2.34.2",
+]
+
+[project.scripts]
+mcp-server = "ai_devops_mcp.main:main"  
+
+[build-system]
+requires = ["uv_build>=0.12.15,<0.13.0"]
+build-backend = "uv_build"
